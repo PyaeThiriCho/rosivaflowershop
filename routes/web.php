@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (){
     return view('welcome');
 });
 
 
 Route::get('/table',[App\Http\Controllers\BackendTemplateController::class, 'tablefun'])->name('table');
+
+Route::resource('category', App\Http\Controllers\CategoryController::class);
+Route::resource('occations', App\Http\Controllers\OccationController::class);
+Route::resource('types', App\Http\Controllers\TypeController::class);
+Route::resource('flowers', App\Http\Controllers\FlowerController::class);
+
+

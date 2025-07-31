@@ -104,26 +104,33 @@
                     <span>Tables</span></a>
             </li>
 
-            {{-- <!--Category-->
+             <!--Category-->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('categories.index')}}">
+                <a class="nav-link" href="{{ route('category.index')}}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Category</span></a>
             </li>
 
-             <!--Student-->
+             <!--Occation-->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('students.index')}}">
+                <a class="nav-link" href="{{ route('occations.index')}}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Student </span></a>
+                    <span>Occation</span></a>
             </li>
 
-             <!--Student-->
+            <!--Type-->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('books.index')}}">
+                <a class="nav-link" href="{{ route('types.index')}}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Book</span></a>
-            </li> --}}
+                    <span>Type</span></a>
+            </li> 
+
+             <!--Flower-->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('flowers.index')}}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Flower</span></a>
+            </li> 
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
