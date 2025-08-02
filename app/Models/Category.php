@@ -16,4 +16,9 @@ class Category extends Model
     {
         return $this->hasMany(Occation::class);
     }
+
+        public function flowers():HasMany
+    {
+        return $this->hasMany(Flower::class);
+    }
 }

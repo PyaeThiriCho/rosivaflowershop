@@ -18,7 +18,7 @@ class Flower extends Model
         'description',
         'type_id',
         'category_id',
-        
+
     ];
 
     public function type():BelongsTo
@@ -26,5 +26,8 @@ class Flower extends Model
         return $this->belongsTo(Type::class);
     }
 
-    
+    public function category():BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

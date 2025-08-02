@@ -11,13 +11,17 @@
                 <h1 class="display-5 fw-bolder">{{$book->name}}</h1>
                 <div class="fs-5 mb-5">
                     {{-- <span class="text-decoration-line-through">$45.00</span> --}}
-                    <span> {{number_format($book->price)}}</span>
+                    <span>{{number_format($book->price)}} MMK</span>
                 </div>
                 <p class="lead">{{$book->description}}</p>
                 <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                        <i class="bi-cart-fill me-1"></i>
+                    <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min="1" style="max-width: 3rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0 add-to-cart-btn" type="button"
+                            data-id="{{$book->id}}"
+                            data-name="{{$book->name}}"
+                            data-price="{{$book->price}}"
+                            data-image="{{asset($book->image)}}">
+                        <i class="fas fa-cart-plus me-1"></i>
                         Add to cart
                     </button>
                 </div>
@@ -40,12 +44,20 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">Fancy Product</h5>
                             <!-- Product price-->
-                            $40.00 - $80.00
+                            40,000 - 80,000 MMK
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                        <div class="text-center">
+                            <button class="btn btn-outline-dark mt-auto add-to-cart-btn"
+                                    data-id="related-1"
+                                    data-name="Fancy Product"
+                                    data-price="40000"
+                                    data-image="https://dummyimage.com/450x300/dee2e6/6c757d.jpg">
+                                Add to cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,13 +81,21 @@
                                 <div class="bi-star-fill"></div>
                             </div>
                             <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">$20.00</span>
-                            $18.00
+                            <span class="text-muted text-decoration-line-through">20,000 MMK</span>
+                            18,000 MMK
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center">
+                            <button class="btn btn-outline-dark mt-auto add-to-cart-btn"
+                                    data-id="related-2"
+                                    data-name="Special Item"
+                                    data-price="18000"
+                                    data-image="https://dummyimage.com/450x300/dee2e6/6c757d.jpg">
+                                Add to cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,13 +111,21 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">Sale Item</h5>
                             <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">$50.00</span>
-                            $25.00
+                            <span class="text-muted text-decoration-line-through">50,000 MMK</span>
+                            25,000 MMK
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center">
+                            <button class="btn btn-outline-dark mt-auto add-to-cart-btn"
+                                    data-id="related-3"
+                                    data-name="Sale Item"
+                                    data-price="25000"
+                                    data-image="https://dummyimage.com/450x300/dee2e6/6c757d.jpg">
+                                Add to cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,12 +147,20 @@
                                 <div class="bi-star-fill"></div>
                             </div>
                             <!-- Product price-->
-                            $40.00
+                            40,000 MMK
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center">
+                            <button class="btn btn-outline-dark mt-auto add-to-cart-btn"
+                                    data-id="related-4"
+                                    data-name="Popular Item"
+                                    data-price="40000"
+                                    data-image="https://dummyimage.com/450x300/dee2e6/6c757d.jpg">
+                                Add to cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

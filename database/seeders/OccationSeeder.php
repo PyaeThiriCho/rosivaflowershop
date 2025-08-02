@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Category;
 
 class OccationSeeder extends Seeder
 {
@@ -14,48 +14,41 @@ class OccationSeeder extends Seeder
      */
     public function run(): void
     {
-    $ids = [3, 5, 6, 8, 9];
-    $flowers = [];
-        $flowerNames = [
-            'Roses', 'Tulips', 'Lilies', 'Daisies', 'Orchids', 'Peonies', 'Sunflowers', 'Carnations',
-            'Hydrangeas', 'Chrysanthemums', 'Alstroemerias', 'Irises', 'Gardenias', 'Anemones', 'Camellias',
-            'Freesias', 'Gladiolus', 'Heather', 'Lavender', 'Magnolias', 'Marigolds', 'Pansies', 'Petunias',
-            'Ranunculus', 'Snapdragons', 'Sweet Peas', 'Violets', 'Zinnias', 'Amaryllis', 'Begonias',
-        ];
+        // Get all category IDs from the categories table
+        $categoryIds = Category::pluck('id')->toArray();
 
-       $flowers = [];
-        $flowerNames = [
-            'Roses', 'Tulips', 'Lilies', 'Daisies', 'Orchids', 'Peonies', 'Sunflowers', 'Carnations',
-            'Hydrangeas', 'Chrysanthemums', 'Alstroemerias', 'Irises', 'Gardenias', 'Anemones', 'Camellias',
-            'Freesias', 'Gladiolus', 'Heather', 'Lavender', 'Magnolias', 'Marigolds', 'Pansies', 'Petunias',
-            'Ranunculus', 'Snapdragons', 'Sweet Peas', 'Violets', 'Zinnias', 'Amaryllis', 'Begonias',
-            'Calla Lilies', 'Cosmos', 'Delphiniums', 'Forget-Me-Nots', 'Foxgloves', 'Gerberas', 'Hibiscus',
-            'Impatiens', 'Jasmine', 'Kalanchoe', 'Larkspur', 'Morning Glory', 'Nasturtium', 'Oleander',
-            'Primroses', 'Queen Anne’s Lace', 'Rhododendrons', 'Scabiosa', 'Tansy', 'Verbena', 'Wisteria',
-            'Xeranthemum', 'Yarrow', 'Aster', 'Bouvardia', 'Clematis', 'Dahlia', 'Echinacea', 'Flannel Flower',
-            'Gaillardia', 'Heliconia', 'Ixora', 'Jacobinia', 'Kangaroo Paw', 'Liatris', 'Monarda', 'Nemesia',
-            'Osteospermum', 'Phlox', 'Quince Blossom', 'Russelia', 'Salvia', 'Tuberose', 'Ursinia', 'Viola',
-            'Waxflower', 'Xylobium Orchid', 'Yellow Archangel', 'Zephyranthes', 'Balloon Flower', 'Bottlebrush',
-            'Calendula', 'Dutch Iris', 'Eryngium', 'Flax', 'Grevillea', 'Honesty Flower', 'Indian Paintbrush',
-            'Japanese Anemone', 'Kniphofia', 'Leucadendron', 'Mimosa', 'Nerine', 'Oxalis', 'Pentas', 'Quillaja',
-            'Rafflesia', 'Sedum', 'Thunbergia', 'Urn Plant'
-        ];
-
-        foreach ($flowerNames as $index => $name) {
-            $flowers[] = [
-                'name' => $name,
-                'price' => rand(20000, 80000),
-                'image' => "https://www.flower.com/images/flowers/".strtolower(str_replace(' ', '-', $name)).".jpg",
-                'description' => "Beautiful {$name} bouquet, perfect for any occasion.",
-                'category_id' => $ids[array_rand($ids)],
-                'created_at' => now(),
-                'updated_at' => now(),
+        // If no categories exist, create some default ones
+        if (empty($categoryIds)) {
+            $defaultCategories = [
+                'Red Roses', 'Pink Roses', 'White Roses', 'Yellow Roses', 'Orange Roses',
+                'Purple Roses', 'Peach Roses', 'Lavender Roses', 'Coral Roses', 'Burgundy Roses'
             ];
+
+            foreach ($defaultCategories as $categoryName) {
+                $category = Category::create(['name' => $categoryName]);
+                $categoryIds[] = $category->id;
+            }
         }
 
-        DB::table('occations')->insert($flowers);
+        $occasionData = [
+            // Wedding Occasions
+            ['name' => 'Bridal Rose Bouquet', 'price' => 85000, 'description' => 'Elegant white roses perfect for bridal bouquets'],
+            ['name' => 'Wedding Peony Collection', 'price' => 95000, 'description' => 'Romantic peonies in soft pink for wedding ceremonies'],
+            ['name' => 'Bridal Lily Arrangement', 'price' => 78000, 'description' => 'Pure white lilies symbolizing purity and devotion'],
+            ['name' => 'Wedding Orchid Display', 'price' => 120000, 'description' => 'Exotic orchids for sophisticated wedding decor'],
+            ['name' => 'Bridal Hydrangea Bouquet', 'price' => 65000, 'description' => 'Full hydrangea bouquets in soft blue tones']
+        ];
 
-
-
+        foreach ($occasionData as $index => $occasion) {
+            DB::table('occations')->insert([
+                'name' => $occasion['name'],
+                'price' => $occasion['price'],
+                'image' => "images/occations/occasion_" . ($index + 1) . ".jpg",
+                'description' => $occasion['description'],
+                'category_id' => $categoryIds[array_rand($categoryIds)],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }

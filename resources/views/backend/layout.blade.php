@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>@yield('title', 'Flower Shop Admin')</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,6 +22,11 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ asset('backend_assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
+
+     <link href="{{asset('frontend_assets/font/css/fontawesome.css')}}" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="{{asset('frontend_assets/font/css/v4-font-face.css')}}" rel="stylesheet"/>
 
 </head>
 
@@ -48,12 +53,10 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">@yield('page-title', 'Dashboard')</h1>
+                    <p class="mb-4">@yield('page-description', 'Welcome to the Flower Shop Admin Panel.')</p>
 
-                    <!-- DataTales Example -->
+                    <!-- Page Content -->
                     @yield('content')
 
                 </div>
@@ -91,7 +94,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{route('admin.login')}}">Logout</a>
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@ class OccationController extends Controller
     {
         $occations= Occation::all();
         return view('backend.occation.list',compact('occations'));
-        
+
     }
 
     /**
@@ -56,7 +56,7 @@ class OccationController extends Controller
             }
          $occation->save();
 
-         return redirect()->route('occations.index')->with('success', 'Book created successfully.');
+         return redirect()->route('admin.occations.index')->with('success', 'Occasion created successfully.');
     }
 
     /**
@@ -85,11 +85,10 @@ class OccationController extends Controller
             'occationName'=>'required|min:3',
             'occationPrice'=>'required|numeric',
             'occationCategory'=>'required|exists:categories,id',
-            'occationImage'=>'required|image|mimes:jpg,png,jpg,gif,svg|max:2048',
+            'occationImage'=>'nullable|image|mimes:jpg,png,jpg,gif,svg|max:2048',
             'occationDescription'=>'required|min:20',
         ]);
 
-            $occation=new Occation();// occations From model
         $occation->name        =$request->occationName;
         $occation->price       =$request->occationPrice;
         $occation->category_id =$request->occationCategory;
@@ -99,7 +98,7 @@ class OccationController extends Controller
         if($request->hasFile('occationImage')){
 
              // Delete the old image if it exists
-            if ($occation->image && file_exists(public_path($occation->image))) 
+            if ($occation->image && file_exists(public_path($occation->image)))
             {
                 unlink(public_path($occation->image));
             }
@@ -109,10 +108,10 @@ class OccationController extends Controller
             $uploadPath=public_path('images/occations');
             $image->move($uploadPath,$imageName);
             $occation->image='images/occations/'.$imageName;
-            }
+        }
          $occation->save();
 
-         return redirect()->route('occations.index')->with('success', 'Book created successfully.');
+         return redirect()->route('admin.occations.index')->with('success', 'Occasion updated successfully.');
     }
 
     /**
@@ -121,6 +120,6 @@ class OccationController extends Controller
     public function destroy(Occation $occation)
     {
         $occation->delete();
-        return redirect()->route('occations.index');
+        return redirect()->route('admin.occations.index');
     }
 }

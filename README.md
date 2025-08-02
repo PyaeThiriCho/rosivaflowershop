@@ -1,66 +1,234 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌸 Fluap Flower Shop
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, responsive flower shop website built with Laravel featuring both frontend customer interface and admin dashboard.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Frontend (Customer Interface)
+- **Homepage**: Showcases featured flowers, occasions, and categories
+- **Flower Catalog**: Browse flowers by categories and types
+- **Occasion Pages**: Special occasion flower arrangements
+- **Category Pages**: Flowers organized by categories
+- **Shopping Cart**: Add flowers to cart with quantity management
+- **Responsive Design**: Works perfectly on all devices
+- **Modern UI**: Beautiful, user-friendly interface
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Admin Dashboard
+- **Secure Authentication**: Admin login with session management
+- **Category Management**: CRUD operations for flower categories
+- **Occasion Management**: Manage special occasions and events
+- **Type Management**: Organize flowers by types
+- **Flower Management**: Complete flower catalog management
+- **Profile Management**: Admin account settings
+- **Image Upload**: Support for flower and occasion images
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ Technology Stack
 
-## Learning Laravel
+- **Backend**: Laravel 11 (PHP 8.2+)
+- **Frontend**: Bootstrap 5, FontAwesome
+- **Database**: MySQL
+- **Authentication**: Laravel's built-in auth system
+- **File Storage**: Local file system for images
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📋 Requirements
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- PHP 8.2 or higher
+- Composer
+- MySQL 5.7 or higher
+- Node.js (for asset compilation)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Installation
 
-## Laravel Sponsors
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd rosivaflowershop
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-### Premium Partners
+3. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+4. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-## Contributing
+5. **Configure database**
+   ```bash
+   # Update .env file with your database credentials
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=flower_shop
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. **Run database migrations**
+   ```bash
+   php artisan migrate
+   ```
 
-## Code of Conduct
+7. **Seed the database**
+   ```bash
+   php artisan db:seed
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+8. **Create storage link**
+   ```bash
+   php artisan storage:link
+   ```
 
-## Security Vulnerabilities
+9. **Start the development server**
+   ```bash
+   php artisan serve
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 👤 Default Admin Credentials
 
-## License
+After running the seeder, you can login to the admin dashboard with:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Email**: `admin@flowershop.com`
+- **Password**: `admin123`
+
+Or use the manager account:
+- **Email**: `manager@flowershop.com`
+- **Password**: `manager123`
+
+## 📁 Project Structure
+
+```
+rosivaflowershop/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── FrontendController.php      # Frontend pages
+│   │   ├── AdminAuthController.php     # Admin authentication
+│   │   ├── CategoryController.php      # Category management
+│   │   ├── OccationController.php      # Occasion management
+│   │   ├── TypeController.php          # Type management
+│   │   └── FlowerController.php        # Flower management
+│   ├── Models/
+│   │   ├── Category.php
+│   │   ├── Occation.php
+│   │   ├── Type.php
+│   │   └── Flower.php
+│   └── Http/Middleware/
+│       └── RedirectIfNotAuthenticated.php
+├── resources/views/
+│   ├── frontend/                       # Customer-facing views
+│   │   ├── layout.blade.php
+│   │   ├── parts/
+│   │   └── ui/
+│   └── backend/                        # Admin dashboard views
+│       ├── layout.blade.php
+│       ├── auth/
+│       ├── parts/
+│       └── [category,occation,type,flower]/
+├── routes/
+│   ├── web.php                         # Main routes
+│   ├── frontend.php                    # Frontend routes
+│   └── admin.php                       # Admin routes
+└── database/
+    ├── migrations/                     # Database structure
+    └── seeders/                       # Sample data
+```
+
+## 🌐 Routes
+
+### Frontend Routes
+- `/` - Homepage
+- `/flower` - Flower catalog
+- `/category/{id}` - Category detail page
+- `/occasion/{id}` - Occasion detail page
+- `/categories` - All categories
+- `/flowers` - All flowers
+
+### Admin Routes
+- `/admin/login` - Admin login
+- `/admin/table` - Dashboard
+- `/admin/category` - Category management
+- `/admin/occations` - Occasion management
+- `/admin/types` - Type management
+- `/admin/flowers` - Flower management
+- `/admin/profile` - Admin profile
+
+## 🎨 Features Overview
+
+### Customer Features
+- **Browse Flowers**: View flowers by categories and types
+- **Occasion Shopping**: Find flowers for specific occasions
+- **Shopping Cart**: Add items and manage quantities
+- **Responsive Design**: Mobile-friendly interface
+- **Search & Filter**: Easy navigation through flower catalog
+
+### Admin Features
+- **Secure Dashboard**: Protected admin interface
+- **Content Management**: Full CRUD for all content types
+- **Image Management**: Upload and manage flower/occasion images
+- **User Management**: Admin profile and password management
+- **Data Analytics**: View counts and statistics
+
+## 🔧 Development
+
+### Adding New Features
+1. Create migrations for database changes
+2. Update models with relationships
+3. Create controllers for new functionality
+4. Add routes in appropriate route files
+5. Create views in frontend or backend directories
+6. Update navigation as needed
+
+### Database Seeding
+The project includes comprehensive seeders:
+- `AdminUserSeeder` - Creates admin accounts
+- `CategorySeeder` - Creates flower categories
+- `TypeSeeder` - Creates flower types
+- `OccationSeeder` - Creates special occasions
+- `FlowerSeeder` - Creates sample flowers
+
+## 🚀 Deployment
+
+1. **Production environment setup**
+   ```bash
+   composer install --optimize-autoloader --no-dev
+   npm run build
+   ```
+
+2. **Environment configuration**
+   - Set `APP_ENV=production`
+   - Configure database credentials
+   - Set up file storage
+
+3. **Database setup**
+   ```bash
+   php artisan migrate --force
+   php artisan db:seed --force
+   ```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 🆘 Support
+
+For support, please contact the development team or create an issue in the repository.
+
+---
+
+**Built with ❤️ using Laravel**

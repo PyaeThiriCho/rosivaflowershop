@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Flower;
 use App\Models\Type;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class FlowerController extends Controller
@@ -23,7 +24,8 @@ class FlowerController extends Controller
     public function create()
     {
         $types=Type::all();
-        return view('backend.flower.create',compact('types'));
+        $categories=Category::all();
+        return view('backend.flower.create',compact('types','categories'));
     }
 
     /**
@@ -35,14 +37,16 @@ class FlowerController extends Controller
             'flowerName'=>'required|min:3',
             'flowerPrice'=>'required|numeric',
             'flowerType'=>'required|exists:types,id',
+            'flowerCategory'=>'required|exists:categories,id',
             'flowerImage'=>'required|image|mimes:jpg,png,jpg,gif,svg|max:2048',
             'flowerDescription'=>'required|min:20',
         ]);
 
-            $flower=new Flower();// occations From model
+            $flower=new Flower();// flowers From model
         $flower->name        =$request->flowerName;
         $flower->price       =$request->flowerPrice;
         $flower->type_id     =$request->flowerType;
+        $flower->category_id =$request->flowerCategory;
         $flower->description =$request->flowerDescription;
 
         //store image in the database
@@ -55,7 +59,7 @@ class FlowerController extends Controller
             }
          $flower->save();
 
-         return redirect()->route('flowers.index')->with('success', 'Flower created successfully.'); 
+         return redirect()->route('admin.flowers.index')->with('success', 'Flower created successfully.');
     }
 
     /**
@@ -72,7 +76,8 @@ class FlowerController extends Controller
     public function edit(Flower $flower)
     {
         $types=Type::all();
-        return view('backend.flower.edit',compact('flower','types'));
+        $categories=Category::all();
+        return view('backend.flower.edit',compact('flower','types','categories'));
     }
 
     /**
@@ -84,34 +89,35 @@ class FlowerController extends Controller
             'flowerName'=>'required|min:3',
             'flowerPrice'=>'required|numeric',
             'flowerType'=>'required|exists:types,id',
-            'flowerImage'=>'required|image|mimes:jpg,png,jpg,gif,svg|max:2048',
+            'flowerCategory'=>'required|exists:categories,id',
+            'flowerImage'=>'nullable|image|mimes:jpg,png,jpg,gif,svg|max:2048',
             'flowerDescription'=>'required|min:20',
         ]);
 
-            $flower=new Flower();// occations From model
         $flower->name        =$request->flowerName;
         $flower->price       =$request->flowerPrice;
         $flower->type_id     =$request->flowerType;
+        $flower->category_id =$request->flowerCategory;
         $flower->description =$request->flowerDescription;
 
         //store image in the database
         if($request->hasFile('flowerImage')){
 
              // Delete the old image if it exists
-            if ($flower->image && file_exists(public_path($flower->image))) 
+            if ($flower->image && file_exists(public_path($flower->image)))
             {
                 unlink(public_path($flower->image));
             }
-            
+
             $image=$request->file('flowerImage');
             $imageName=time().'.'.$image->getClientOriginalExtension();
             $uploadPath=public_path('images/flowers');
             $image->move($uploadPath,$imageName);
             $flower->image='images/flowers/'.$imageName;
-            }
+        }
          $flower->save();
 
-         return redirect()->route('flowers.index')->with('success', 'Flower created successfully.'); 
+         return redirect()->route('admin.flowers.index')->with('success', 'Flower updated successfully.');
     }
 
     /**
@@ -120,6 +126,6 @@ class FlowerController extends Controller
     public function destroy(Flower $flower)
     {
         $flower->delete();
-        return redirect()->route('flowers.index');
+        return redirect()->route('admin.flowers.index');
     }
 }

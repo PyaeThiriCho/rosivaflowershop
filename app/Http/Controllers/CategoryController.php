@@ -47,7 +47,7 @@ class CategoryController extends Controller
         ]);
 
         //redirect to list page
-        return redirect()->route('category.index')->with('success','Book created successfully');
+        return redirect()->route('admin.category.index')->with('success','Category created successfully');
     }
 
     /**
@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-         review('backend.category.detail',compact('id'));  
+         return view('backend.category.detail',compact('category'));
     }
 
     /**
@@ -89,7 +89,7 @@ class CategoryController extends Controller
 
 
         //redirect to list page
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -98,6 +98,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('category.index'); //
+        return redirect()->route('admin.category.index'); //
     }
 }

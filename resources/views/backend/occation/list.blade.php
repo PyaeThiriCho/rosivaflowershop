@@ -1,60 +1,73 @@
 @extends('backend.layout')
 
+@section('title', 'Occasions - Flower Shop Admin')
+@section('page-title', 'Occasions Management')
+@section('page-description', 'Manage all special occasions and events in your shop.')
+
 @section('content')
-  <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Occation List</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
-                             <div class="card shadow mb-occations
-    <div class="card-header d-flex align-items-center justify-content-between py-3">
-        <h6 class="m-0 font-weight-bold text-primary">All Occations</h6>
-        <a href="{{ route('occations.create')}}" class="btn btn-primary">Add Occation</a>
+    {{-- success message --}}
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{session('success')}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Category</th>
-                        <th>Actions</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($occations as $occation)
-                    <tr>
-                        <td>{{ $occation->id }}</td>
-                        <td>{{ $occation->name }}</td>
-                        <td>{{ $occation->price }} </td>
-                        <td>{{ $occation->category->name}}</td>
-                        
+    @endif
 
-                        <td>
-                            <a href="{{ route('occations.show',$occation->id)}}" class="btn btn-sm btn-primary">View</a>
-                            <a href="{{ route('occations.edit', $occation->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                         
-                            <form action="{{ route('occations.destroy',$occation->id)}}" method="POST" class="d-inline-block">
-                                @method('DELETE')
-                                @csrf
-                                
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                            </form>
-                        </td>
-                    
-                    </tr>
-                   
-                </tbody>
-                @endforeach
-            </table>
+    <div class="card shadow mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between py-3">
+            <h6 class="m-0 font-weight-bold text-primary">All Occasions</h6>
+            <a href="{{ route('admin.occations.create')}}" class="btn btn-primary">
+                <i class="fas fa-plus mr-2"></i>Add Occasion
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($occations as $occation)
+                        <tr>
+                            <td>{{ $occation->id }}</td>
+                            <td>{{ $occation->name }}</td>
+                            <td>{{ number_format($occation->price) }} MMK</td>
+                            <td>{{ $occation->category->name ?? 'N/A' }}</td>
+                            <td>
+                                @if($occation->image)
+                                    <img src="{{ asset($occation->image) }}" alt="{{ $occation->name }}"
+                                         style="width: 50px; height: 50px; object-fit: cover;" class="rounded">
+                                @else
+                                    <span class="text-muted">No image</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.occations.show',$occation->id)}}" class="btn btn-sm btn-info">
+                                    <i class="fas fa-eye"></i> View
+                                </a>
+                                <a href="{{ route('admin.occations.edit', $occation->id)}}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <form action="{{ route('admin.occations.destroy',$occation->id)}}" method="POST" class="d-inline-block">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this occasion?')">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 @endsection

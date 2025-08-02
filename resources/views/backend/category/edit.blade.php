@@ -1,48 +1,47 @@
 @extends('backend.layout')
 
+@section('title', 'Edit Category - Flower Shop Admin')
+@section('page-title', 'Edit Category')
+@section('page-description', 'Update the category information.')
+
 @section('content')
- <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Categories Update</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
 <div class="card shadow mb-4">
-    
     <div class="card-header d-flex align-items-center justify-content-between py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Update Category Testing </h6>
-        <a href="{{ route('category.index')}}" class="btn btn-primary">Back</a>
+        <h6 class="m-0 font-weight-bold text-primary">Update Category: {{ $category->name }}</h6>
+        <a href="{{ route('admin.category.index')}}" class="btn btn-primary">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Categories
+        </a>
     </div>
 
     <div class="card-body">
-        <form action="{{ route('category.update',$category->id)}}" method="POST">
+        <form action="{{ route('admin.category.update',$category->id)}}" method="POST">
             @method('PUT')
             @csrf
             <div class="row mb-3">
-                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <label for="name" class="col-sm-2 col-form-label">Category Name</label>
                 <div class="col-sm-10">
-                    <input type="text" name="categoryName" class="form-control w-50 @error('categoryName') is-invalid @enderror"  value="{{$category->name}}" id="name" placeholder="Eg: Electronics">.
-                   
+                    <input type="text" name="categoryName" class="form-control w-50 @error('categoryName') is-invalid @enderror"
+                           value="{{ old('categoryName', $category->name) }}" id="name" placeholder="Enter category name">
+
                     @error('categoryName')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-
-                <div>
+                </div>
             </div>
 
             <div class="row">
                 <div class="offset-sm-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save mr-2"></i>Update Category
+                    </button>
+                    <a href="{{ route('admin.category.index')}}" class="btn btn-secondary">
+                        <i class="fas fa-times mr-2"></i>Cancel
+                    </a>
                 </div>
             </div>
         </form>
     </div>
 </div>
-</div>
-
-
 @endsection

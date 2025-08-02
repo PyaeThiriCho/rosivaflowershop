@@ -47,7 +47,7 @@ class TypeController extends Controller
         ]);
 
         //redirect to list page
-        return redirect()->route('types.index')->with('success','Type created successfully');
+        return redirect()->route('admin.types.index')->with('success','Type created successfully');
     }
 
     /**
@@ -55,7 +55,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        review('backend.type.detail',compact('id')); 
+        return view('backend.type.detail',compact('type'));
     }
 
     /**
@@ -89,7 +89,7 @@ class TypeController extends Controller
         $type->save();
 
          //redirect to list page
-        return redirect()->route('types.index')->with('success','Type created successfully');
+        return redirect()->route('admin.types.index')->with('success','Type updated successfully');
     }
 
     /**
@@ -98,6 +98,6 @@ class TypeController extends Controller
     public function destroy(Type $type)
     {
         $type->delete();
-        return redirect()->route('types.index'); 
+        return redirect()->route('admin.types.index');
     }
 }
