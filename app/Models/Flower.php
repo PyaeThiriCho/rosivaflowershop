@@ -21,7 +21,7 @@ class Flower extends Model
         
     ];
 
-    public function types():BelongsTo
+    public function type():BelongsTo
     {
         return $this->belongsTo(Type::class);
     }

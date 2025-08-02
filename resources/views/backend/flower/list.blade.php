@@ -34,7 +34,7 @@
                         <td>{{ $flower->id }}</td>
                         <td>{{ $flower->name }}</td>
                         <td>{{ $flower->price }} </td>
-                        <td>{{ $flower->types}}</td>
+                        <td>{{ $flower->type->name}}</td>
                         
 
                         <td>
