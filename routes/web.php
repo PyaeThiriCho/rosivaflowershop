@@ -25,4 +25,14 @@ Route::resource('occations', App\Http\Controllers\OccationController::class);
 Route::resource('types', App\Http\Controllers\TypeController::class);
 Route::resource('flowers', App\Http\Controllers\FlowerController::class);
 
+//for ui
+Route::get('/', [App\Http\Controllers\FrontendController::class,'index'])->name('homepage');
+Route::get('/detail', [App\Http\Controllers\FrontendController::class,'detail'])->name('detailpage');
+Route::get('/occassions', [App\Http\Controllers\FrontendController::class,'occassion'])->name('occassionpage');
+Route::get('/flowers', [App\Http\Controllers\FrontendController::class,'flower'])->name('flowerpage');
+Route::get('/reviews', [App\Http\Controllers\FrontendController::class,'review'])->name('reviewpage');
+Route::get('/contacts', [App\Http\Controllers\FrontendController::class,'contact'])->name('contactpage');
+Route::get('/carts', [App\Http\Controllers\FrontendController::class,'cart'])->name('cartpage');
+
+
 
