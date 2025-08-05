@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
           <a class="navbar-brand" href="#" aria-label="Fluap Flower Shop Home">
-              <i class="fas fa-seedling me-2"></i>Fluap
+              <i class="fas fa-seedling me-2"></i>Rosiva
           </a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -13,7 +13,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                      <a class="nav-link" href="#home">Home</a>
+                      <a class="nav-link" href="{{route('homepage')}}">Home</a>
                   </li>
 
                   {{-- occassion --}}
@@ -44,7 +44,7 @@
                           Categories
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                          @if(isset($categories) && $categories->count() > 0)
+                          {{-- @if(isset($categories) && $categories->count() > 0) --}}
                               @foreach($categories->take(10) as $category)
                                   <li>
                                       <a class="dropdown-item" href="{{ route('category.detail', $category->id) }}">
@@ -52,18 +52,20 @@
                                       </a>
                                   </li>
                               @endforeach
-                              <li><hr class="dropdown-divider"></li>
+                              {{-- <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item" href="{{ route('categories.all') }}">View All Categories</a></li>
                           @else
                               <li><div class="dropdown-item text-muted">No categories available</div></li>
-                          @endif
+                          @endif --}}
                       </ul>
                   </li>
 
-                  {{-- All flowers --}}
+                  {{-- Contact --}}
                   <li class="nav-item">
-                      <a class="nav-link" href="{{ route('flowers.all') }}">All Flowers</a>
+                      <a class="nav-link" href="{{route('contactpage')}}">Contact</a>
                   </li>
+
+                  {{-- cart --}}
                   <li class="nav-item">
                       <a class="nav-link position-relative" href="#" id="cartIcon">
                           <i class="fas fa-shopping-cart"></i>
