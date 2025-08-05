@@ -37,8 +37,12 @@
                                                 <div class="col-6">
                                                     <div class="mini-flower-card">
                                                         @if($flower->image)
-                                                           <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=150&h=100&fit=crop" alt="{{ $flower->name }}" class="img-fluid">
-                                                            {{-- <img src="{{ asset($flower->image) }}" alt="{{ $flower->name }}" class="img-fluid"> --}}
+                                                           
+                                                        <div style="width: 220px; height: 220px; overflow: hidden; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                                            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=150&h=100&fit=crop"alt="{{ $flower->name }}"style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                                                        </div>
+
+                                                            {{-- <img src="{{ asset($flower->image) }}" alt="{{ $flower->name }}" class="img-fluid width='150' height='150'"> --}}
                                                         @else
                                                             <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=150&h=100&fit=crop" alt="{{ $flower->name }}" class="img-fluid">
                                                         @endif

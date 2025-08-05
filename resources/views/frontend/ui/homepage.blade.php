@@ -213,7 +213,7 @@
     </section>
 
     <!-- Flowers by Categories Section -->
-    @if(isset($categories) && $categories->count() > 0)
+    {{-- @if(isset($categories) && $categories->count() > 0)
         <section id="flowers-by-categories" class="flowers-categories-section py-5" style="background: var(--light-bg);">
             <div class="container">
                 <h2 class="section-title text-center mb-5">Flowers by Categories</h2>
@@ -286,7 +286,7 @@
                 </div>
             </div>
         </section>
-    @endif
+    @endif --}}
 
     <!-- Reviews Section -->
     <section id="reviews" class="reviews-section">

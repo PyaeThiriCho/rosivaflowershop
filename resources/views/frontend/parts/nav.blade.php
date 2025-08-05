@@ -15,6 +15,8 @@
                   <li class="nav-item">
                       <a class="nav-link" href="#home">Home</a>
                   </li>
+
+                  {{-- occassion --}}
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="occasionsDropdown" role="button"
                           data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,6 +36,8 @@
                           @endif
                       </ul>
                   </li>
+
+                  {{-- categories --}}
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button"
                           data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,6 +59,8 @@
                           @endif
                       </ul>
                   </li>
+
+                  {{-- All flowers --}}
                   <li class="nav-item">
                       <a class="nav-link" href="{{ route('flowers.all') }}">All Flowers</a>
                   </li>
@@ -64,6 +70,8 @@
                           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
                       </a>
                   </li>
+
+                  {{-- Admin Login --}}
                   <li class="nav-item">
                       <a class="nav-link" href="{{ route('admin.login') }}" target="_blank">
                           <i class="fas fa-user-shield me-1"></i>Admin Login

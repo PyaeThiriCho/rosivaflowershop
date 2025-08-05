@@ -19,49 +19,55 @@
     </section>
 
     <!-- Flowers Section -->
-    <section class="flowers-section py-5">
-        <div class="container">
-            @if($flowers->count() > 0)
-                <div class="row g-4">
-                    @foreach($flowers as $flower)
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="flower-card">
-                                <div class="flower-image">
-                                    @if($flower->image)
-                                        <img src="{{ asset($flower->image) }}" alt="{{ $flower->name }}" class="img-fluid">
-                                    @else
-                                        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=300&h=250&fit=crop" alt="{{ $flower->name }}" class="img-fluid">
-                                    @endif
-                                    <div class="flower-overlay">
-                                        <button class="flower-view-btn" onclick="showFlowerDetails({{ $flower->id }})">
-                                            <i class="fas fa-eye me-2"></i>View Details
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="flower-info">
-                                    <h5 class="flower-title">{{ $flower->name }}</h5>
-                                    <p class="flower-price">{{ number_format($flower->price) }} MMK</p>
-                                    <button class="add-to-cart-btn"
-                                            onclick="addToCart({{ $flower->id }}, '{{ $flower->name }}', {{ $flower->price }}, '{{ $flower->image }}')">
-                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+<section class="flowers-section py-5">
+    <div class="container">
+        @if($flowers->count() > 0)
+            <div class="row g-4">
+                @foreach($flowers as $flower)
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="flower-card shadow-sm border rounded p-2 h-100">
+                            <div class="flower-image position-relative text-center">
+                                @if($flower->image)
+                                    <img src="{{ asset($flower->image) }}" 
+                                            alt="{{ $flower->name }}" 
+                                            class="img-fluid rounded"
+                                            style="width: 220px; height: 220px; object-fit: cover;">
+                                @else
+                                    <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=300&h=250&fit=crop" 
+                                            alt="{{ $flower->name }}" 
+                                            class="img-fluid rounded"
+                                            style="width: 220px; height: 220px; object-fit: cover;">
+                                @endif
+                                <div class="flower-overlay position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center" style="background: rgba(0, 0, 0, 0.4); opacity: 0; transition: 0.3s;">
+                                    <button class="flower-view-btn btn btn-light" onclick="showFlowerDetails({{ $flower->id }})">
+                                        <i class="fas fa-eye me-2"></i>View Details
                                     </button>
                                 </div>
                             </div>
+                            <div class="flower-info text-center mt-3">
+                                <h5 class="flower-title">{{ $flower->name }}</h5>
+                                <p class="flower-price text-primary fw-bold">{{ number_format($flower->price) }} MMK</p>
+                                <button class="add-to-cart-btn btn btn-outline-primary mt-2"
+                                        onclick="addToCart({{ $flower->id }}, '{{ $flower->name }}', {{ $flower->price }}, '{{ $flower->image }}')">
+                                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                </button>
+                            </div>
                         </div>
-                    @endforeach
-                </div>
-            @else
-                <div class="text-center py-5">
-                    <i class="fas fa-flower fa-3x text-muted mb-3"></i>
-                    <h3 class="text-muted">No flowers found in this category</h3>
-                    <p class="text-muted">We're working on adding more flowers to this category.</p>
-                    <a href="{{ route('categories.all') }}" class="btn btn-primary">
-                        <i class="fas fa-arrow-left me-2"></i>Browse Other Categories
-                    </a>
-                </div>
-            @endif
-        </div>
-    </section>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="text-center py-5">
+                <i class="fas fa-flower fa-3x text-muted mb-3"></i>
+                <h3 class="text-muted">No flowers found in this category</h3>
+                <p class="text-muted">We're working on adding more flowers to this category.</p>
+                <a href="{{ route('categories.all') }}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left me-2"></i>Browse Other Categories
+                </a>
+            </div>
+        @endif
+    </div>
+</section>
 
     <!-- Flower Detail Modal -->
     <div class="modal fade" id="flowerModal" tabindex="-1" aria-labelledby="flowerModalLabel" aria-hidden="true">
