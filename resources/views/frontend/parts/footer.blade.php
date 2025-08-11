@@ -4,7 +4,7 @@
           <div class="row g-4">
               <div class="col-lg-4">
                   <h5 class="font-playfair mb-4">
-                      <i class="fas fa-seedling me-2" style="color: var(--primary-color);"></i>Fluap Flower Shop
+                      <i class="fas fa-seedling me-2" style="color: var(--primary-color);"></i>Rosiva Flower Shop
                   </h5>
                   <p class="mb-4">Creating beautiful moments with fresh flowers and exceptional service. Your trusted
                       partner for all floral needs.</p>
@@ -21,11 +21,11 @@
               <div class="col-lg-2 col-md-6">
                   <h6 class="mb-4">Quick Links</h6>
                   <ul class="list-unstyled">
-                      <li class="mb-2"><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
+                      <li class="mb-2"><a href="{{route('homepage')}}" class="text-white-50 text-decoration-none">Home</a></li>
                       <li class="mb-2"><a href="#about" class="text-white-50 text-decoration-none">About</a></li>
                       <li class="mb-2"><a href="#products" class="text-white-50 text-decoration-none">Products</a>
                       </li>
-                      <li class="mb-2"><a href="#contact" class="text-white-50 text-decoration-none">Contact</a></li>
+                      <li class="mb-2"><a href="{{route('contactpage')}}" class="text-white-50 text-decoration-none">Contact</a></li>
                   </ul>
               </div>
 

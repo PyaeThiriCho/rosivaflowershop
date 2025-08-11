@@ -10,8 +10,8 @@
                     <p class="text-white-50 mb-0">Discover our beautiful collection of {{ $category->name }}</p>
                 </div>
                 <div class="col-lg-4 text-lg-end">
-                    <a href="{{ route('categories.all') }}" class="btn btn-light">
-                        <i class="fas fa-arrow-left me-2"></i>Back to Categories
+                    <a href="{{ route('homepage') }}"  class="btn btn-light">
+                        <i class="fas fa-arrow-left me-2"></i>Back to home
                     </a>
                 </div>
             </div>

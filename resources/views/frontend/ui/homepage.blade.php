@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="hero-content">
-                        <h1 class="hero-title">Fluap Flower Shop</h1>
+                        <h1 class="hero-title">Rosiva Flower Shop</h1>
                         <p class="hero-subtitle">
                             Every bouquet we deliver is a story of love, care, and connection — sent from your heart to
                             their doorstep.
@@ -129,7 +129,7 @@
 
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h2>Fluap Flower Shop Welcomes You!</h2>
+                        <h2>Rosiva Flower Shop Welcomes You!</h2>
                         <p class="mb-4">
                             With over a decade of experience in floral artistry, we take pride in creating stunning
                             arrangements
@@ -193,11 +193,11 @@
                     @endforeach
                 </div>
 
-                <div class="text-center mt-5">
+                {{-- <div class="text-center mt-5">
                     <a href="{{ route('flowers.all') }}" class="hero-btn">
                         <i class="fas fa-th me-2"></i>View All Products
                     </a>
-                </div>
+                </div> --}}
             @else
                 <!-- Empty State for Featured Products -->
                 <div class="text-center py-5">
@@ -306,7 +306,7 @@
                         </div>
 
                         <p class="mb-4">
-                            "Fluap Flower Shop exceeded my expectations! The bouquet was fresh, beautifully arranged,
+                            "Rosiva Flower Shop exceeded my expectations! The bouquet was fresh, beautifully arranged,
                             and delivered right on time. The attention to detail and customer service were outstanding.
                             Highly recommended!"
                         </p>
