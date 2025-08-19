@@ -176,9 +176,9 @@
                                 <div class="product-info">
                                     <h5 class="product-title">{{ $flower->name }}</h5>
                                     <p class="product-price">{{ number_format($flower->price) }} MMK</p>
-                                    @if($flower->category)
+                                    {{-- @if($flower->category)
                                         <small class="text-muted">{{ $flower->category->name }}</small>
-                                    @endif
+                                    @endif --}}
                                     <button class="add-to-cart-btn"
                                             aria-label="Add {{ $flower->name }} to cart"
                                             data-id="{{ $flower->id }}"
